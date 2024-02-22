@@ -21,8 +21,12 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "$Env:
 # Restart the service
 Restart-Service sshd
  
+# Path to ssh public key file
+#$ssh_key_file_path = "./certs/terraform-public/ansible-win.key.pub"
+
 # Configure SSH public key
-$content = "ssh-rsa PUBLIC Key"
+$content = "ssh-rsa AAAA....olfS52D0= administrator@windows2022"
+#$content = Get-Content -Path $ssh_key_file_path -Raw
  
 # Write public key to file
 $content | Set-Content -Path "$Env:ProgramData\ssh\administrators_authorized_keys"
